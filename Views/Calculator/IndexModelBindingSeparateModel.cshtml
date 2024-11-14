@@ -1,0 +1,64 @@
+﻿@model LW_12_WebApplication.Models.CalcModel
+@using LW_12_WebApplication.Models
+
+@using (Html.BeginForm("IndexModelBindingSeparateModel", "Calculator", FormMethod.Post))
+{
+    <h1>ModelBindingInSeparateModel</h1>
+    <p>
+        <input asp-for="Num1" class="form-input" type="text" />
+    </p>
+    <p>
+        <select asp-for="Operation" asp-items="Html.GetEnumSelectList<OperationType>()"></select>
+    </p>
+    <p>
+        <input asp-for="Num2" class="form-input" type="text" />
+    </p>
+    <p>
+        <input type="submit" value="Submit" class="form-submit" />
+    </p>
+}
+<div class="line"></div>
+
+@if (ViewBag.Error != null)
+{
+    <h2>@ViewBag.Error</h2>
+}
+
+<style>
+
+    h1 {
+        font-weight: 400;
+    }
+
+    h2 {
+        color: red;
+        font-size: 14px;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .form-input {
+        padding: 5px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 320px;
+        border-radius: 5px;
+        border: 1px solid gray;
+    }
+
+    .form-submit {
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .line {
+        width: 96%;
+        height: 1px;
+        background-color: gray;
+        opacity: 0.2;
+        margin-top: 30px;
+    }
+
+</style>
